@@ -40,12 +40,18 @@ print(diff_percentage)
 
 
 
-
-
 ## STEP 2: Use https://newsapi.org/docs/endpoints/everything
 # Instead of printing ("Get News"), actually fetch the first 3 articles for the COMPANY_NAME. 
 #HINT 1: Think about using the Python Slice Operator
-
+news_params = {
+    "apiKey" : NEWS_KEY,
+    "qInTitle": COMPANY_NAME,
+    "pageSize": 3,
+    "sortBy": "publishedAt",
+}
+news_response = requests.get(NEWS_ENDPOINT, params=news_params)
+articles = news_response.json()['articles']
+print(articles)
 
 
 ## STEP 3: Use twilio.com/docs/sms/quickstart/python
